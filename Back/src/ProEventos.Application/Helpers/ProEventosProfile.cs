@@ -1,3 +1,4 @@
+using System;
 using AutoMapper;
 using ProEventos.Application.Dtos;
 using ProEventos.Domain;
@@ -8,7 +9,10 @@ namespace ProEventos.Application.Helpers
     {
         public ProEventosProfile()
         {
-            CreateMap<Evento, EventoDto>().ReverseMap();
+            CreateMap<Evento, EventoDto>()
+                // .ForMember(x => x.DataEvento,
+                //     opt => opt.MapFrom(src => ((DateTime)src.DataEvento).ToString("yyyy-MM-ddTHH:mm:ss")))
+                .ReverseMap();
             CreateMap<Lote, LoteDto>().ReverseMap();
             CreateMap<RedeSocial, RedeSocialDto>().ReverseMap();
             CreateMap<Palestrante, PalestranteDto>().ReverseMap();
